@@ -8,6 +8,7 @@ import { Desktop } from './notification/desktop.js';
 import { Console } from './notification/console.js';
 import { type Notification } from './types/notification.js';
 import { Discord } from './notification/discord.js';
+import { Pushover } from './notification/pushover.js';
 
 const random = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -36,6 +37,7 @@ export class Core {
   private console: Console | null;
   private desktop: Desktop | null;
   private discord: Discord | null;
+  private pushover: Pushover | null;
 
   constructor() {
     this.access_token = null;
@@ -73,6 +75,12 @@ export class Core {
       this.discord = new Discord();
     } else {
       this.discord = null;
+    }
+
+    if (env.NOTIFICATIONS_PUSHOVER_ENABLED === 'true') {
+      this.pushover = new Pushover();
+    } else {
+      this.pushover = null;
     }
 
     void this.init();
@@ -279,6 +287,10 @@ export class Core {
 
     if (this.discord) {
       this.discord.send(notification);
+    }
+
+    if (this.pushover) {
+      void this.pushover.send(notification);
     }
   }
 

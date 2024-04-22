@@ -16,6 +16,9 @@ export const serverSchema = z.object({
   NOTIFICATIONS_TELEGRAM_BOT_TOKEN: z.string(),
   NOTIFICATIONS_DISCORD_ENABLED: z.string(),
   NOTIFICATIONS_DISCORD_WEBHOOK_URL: z.string(),
+  NOTIFICATIONS_PUSHOVER_ENABLED: z.string(),
+  NOTIFICATIONS_PUSHOVER_API_TOKEN: z.string(),
+  NOTIFICATIONS_PUSHOVER_USER_TOKEN: z.string(),
   LOCALE: z.string(),
   TIMEZONE: z.string(),
 });
