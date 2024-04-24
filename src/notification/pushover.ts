@@ -43,7 +43,7 @@ export class Pushover {
         method: 'POST',
         body: formData,
       }).then((response) => {
-        console.log(`response: ${response}`)
+        console.log(`Sent pushover notification.`)
       }).catch((error) => {
         console.error(error);
       });
