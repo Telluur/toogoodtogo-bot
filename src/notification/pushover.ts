@@ -36,6 +36,8 @@ export class Pushover {
       formData.append('html', '1');
       formData.append('title', item.display_name);
       formData.append('message', message);
+      formData.append('url', `https://share.toogoodtogo.com/item/${item.item.item_id}/`);
+      formData.append('url_title', "Open in app");
 
       void fetch(Pushover.url, {
         method: 'POST',
